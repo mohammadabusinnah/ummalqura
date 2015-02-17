@@ -1,0 +1,25 @@
+<appian-plugin name="Standard Um Al Qura Calculations" key="standardumalquracalculations">
+
+  <plugin-info>
+    <description>Standard Um Al Qura Calculations</description>
+    <vendor name="Appian Corporation" url="http://www.appian.com" />
+    <version>1.0.0</version>
+    <application-version min="6.1.0" />
+  </plugin-info>
+
+  <function-category key="islamicDateFunctionsCategory" name="Islamic Date Functions"/>
+  <function key="convertgregoriantoummalqura" class="com.appiancorp.islamicdates.AppianDateToUmAlQuraConversion"/>
+
+  <function key="convertgregoriantoumalqurawitharabicmonth" class="com.appiancorp.islamicdates.AppianDateTOUmAlQuraConversionWithArabicName"/>
+
+  <function key="AppianDateTOUmAlQuraConversionWithEnglishName" class="com.appiancorp.islamicdates.AppianDateTOUmAlQuraConversionWithEnglishName"/>
+
+  <function key="returnarabicislamicmonths" class="com.appiancorp.islamicdates.ReturnArabicMonthsNames"/>
+
+  <function key="ReturnEnglishMonthsNames" class="com.appiancorp.islamicdates.ReturnEnglishMonthsNames"/>
+
+  <function key="convertummalquratogregorian" class="com.appiancorp.islamicdates.UmAlquraToGregorian"/>
+
+
+
+</appian-plugin>
