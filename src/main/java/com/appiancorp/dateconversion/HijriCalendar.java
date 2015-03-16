@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
+import org.joda.time.chrono.GregorianChronology;
 import org.joda.time.chrono.IslamicChronology;
 
 public class HijriCalendar {
@@ -247,8 +248,8 @@ public class HijriCalendar {
 			79222, 79251, 79281, 79310, 79340, 79369, 79399, 79428, 79458,
 			79487, 79517, 79546, 79576, 79606, 79635, 79665, 79695, 79724,
 			79753, 79783, 79812, 79841, 79871, 79900, 79930, 79960, 79990 };
-	private static final double MAXIMUM_YEAR = 2029;
-	private static final double MINIMUM_YEAR = 1938 ;
+	private static final double MAXIMUM_YEAR = 2076;
+	private static final double MINIMUM_YEAR = 1937 ;
 
 	double[][] _yearInfo = { { 1769, -21681216E5 }, { 3794, -21374496E5 },
 			{ 3748, -21067776E5 }, { 3402, -2076192E6 }, { 2710, -20456064E5 },
@@ -397,7 +398,12 @@ public class HijriCalendar {
 		int gyear = hyear - 1319;
 		hmonth = hmonth - 1;
 		if (gyear < 0 || gyear >= this._yearInfo.length) {
-			return null;
+			  Chronology iso = GregorianChronology.getInstance();
+			  Chronology hijri = IslamicChronology.getInstanceUTC();
+			  DateTime dtHijri = new DateTime(hyear,hmonth+1,hday,0,0,hijri);
+              DateTime dtIso = new DateTime(dtHijri, iso);
+              Date newDate = new Date(dtIso.getMillis());
+              return newDate;
 		}
 		double[] info = _yearInfo[gyear];
 		Date gdate = new Date((new Double(info[1])).longValue());
